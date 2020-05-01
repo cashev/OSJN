@@ -1,1 +1,1 @@
-.\tolset\z_tools\nask.exe helloos.nas helloos.img
+.\tolset\z_tools\nask.exe ipl.nas ipl.bin ipl.lst
