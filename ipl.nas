@@ -74,10 +74,10 @@ next:
 		CMP		CH,CYLS
 		JB		readloop		; CH < CYLS だったらreadloopへ
 
-; 読み終わったけどとりあえずやることないので寝る
-fin:
-		HLT						; 何かあるまでCPUを停止させる
-		JMP		fin				; 無限ループ
+; 読み終わったのでharibote.sysを実行だ!
+
+		MOV		[0x0ff0],CH		; IPLがどこまで読んだかをメモ
+		JMP		0xc200
 
 error:
         MOV     SI,msg
@@ -91,6 +91,9 @@ putloop:
 		MOV		BX,15			; カラーコード
 		INT		0x10			; ビデオBIOS呼び出し
 		JMP		putloop
+fin:
+		HLT						; 何かあるまでCPUを停止させる
+		JMP		fin				; 無限ループ
 
 msg:
 		DB		0x0a, 0x0a		; 改行を2つ
