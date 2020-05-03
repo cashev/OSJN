@@ -1,7 +1,9 @@
 TOOLPATH = ./tolset/z_tools/
+INCPATH = ./tolset/z_tools/haribote/
+
 MAKE	 = $(TOOLPATH)make.exe -r
 NASK	 = $(TOOLPATH)nask.exe
-CC1		 = $(TOOLPATH)cc1.exe -I$(INCPATH) -0s -Wall -quiet
+CC1		 = $(TOOLPATH)cc1.exe -I$(INCPATH) -Os -Wall -quiet
 GAS2NASK = $(TOOLPATH)gas2nask.exe -a
 OBJ2BIM	 = $(TOOLPATH)obj2bim.exe
 BIM2HRB	 = $(TOOLPATH)bim2hrb.exe
