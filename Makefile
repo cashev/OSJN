@@ -3,15 +3,17 @@ INCPATH = ./tolset/z_tools/haribote/
 
 MAKE	 = $(TOOLPATH)make.exe -r
 NASK	 = $(TOOLPATH)nask.exe
-CC1		 = $(TOOLPATH)cc1.exe -I$(INCPATH) -Os -Wall -quiet
+CC1	 = $(TOOLPATH)cc1.exe -I$(INCPATH) -Os -Wall -quiet
 GAS2NASK = $(TOOLPATH)gas2nask.exe -a
 OBJ2BIM	 = $(TOOLPATH)obj2bim.exe
+MAKEFONT = $(TOOLPATH)makefont.exe
+BIN2OBJ	 = $(TOOLPATH)bin2obj.exe
 BIM2HRB	 = $(TOOLPATH)bim2hrb.exe
 RULEFILE = $(TOOLPATH)haribote/haribote.rul
 EDIMG	 = $(TOOLPATH)edimg.exe
 IMGTOL	 = $(TOOLPATH)emgtol.com
 COPY	 = copy
-DEL		 = del
+DEL      = del
 
 # デフォルトの動作
 
@@ -38,9 +40,15 @@ bootpack.obj : bootpack.nas Makefile
 naskfunc.obj : naskfunc.nas Makefile
 	$(NASK) naskfunc.nas naskfunc.obj bootpack.lst
 
-bootpack.bim : bootpack.obj naskfunc.obj Makefile
+hankaku.bin : hankaku.txt Makefile
+	$(MAKEFONT) hankaku.txt hankaku.bin
+
+hankaku.obj : hankaku.bin Makefile
+	$(BIN2OBJ) hankaku.bin hankaku.obj _hankaku
+
+bootpack.bim : bootpack.obj naskfunc.obj hankaku.obj Makefile
 	$(OBJ2BIM) @$(RULEFILE) out:bootpack.bim stack:3136k map:bootpack.map \
-		bootpack.obj naskfunc.obj
+		bootpack.obj naskfunc.obj hankaku.obj
 # 3MB+64KB=3136KB
 
 bootpack.hrb : bootpack.bim Makefile
@@ -83,3 +91,4 @@ clean :
 src_only :
 	$(MAKE) clean
 	-$(DEL) haribote.img
+
