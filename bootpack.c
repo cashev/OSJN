@@ -42,19 +42,12 @@ struct BOOTINFO {
 
 void HariMain(void)
 {
-    char *vram;
-    int xsize, ysize;
-    struct BOOTINFO *binfo;
 
     init_palette(); /* パレットを設定 */
 
     // asmhead.nas の番地に合わせる
-    binfo = (struct BOOTINFO *) 0x0ff0;
-    xsize = (*binfo).scrnx; // 0x0ff4
-    ysize = (*binfo).scrny; // 0x0ff6
-    vram = (*binfo).vram;   // 0x0ff8
-
-    init_screen(vram, xsize, ysize);
+    struct BOOTINFO *binfo = (struct BOOTINFO *) 0x0ff0;
+    init_screen(binfo->vram, binfo->scrnx, binfo->scrny);
 
     for (;;) {
     	io_hlt();
