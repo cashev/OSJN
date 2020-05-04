@@ -176,7 +176,7 @@ void init_mouse_cursor8(char *mouse, char bc)
 {
     static char cursor[16][16] = {
          "**************..",
-	 "*OOOOOOOOOOO*...",
+         "*OOOOOOOOOOO*...",
          "*OOOOOOOOOO*....",
          "*OOOOOOOOO*.....",
          "*OOOOOOOO*......",
