@@ -7,7 +7,7 @@ struct BOOTINFO {
   short scrnx, scrny; /* 画面解像度 */
   char *vram;
 };
-#define ADR_BOOTIFNO 0x00000ff0
+#define ADR_BOOTINFO 0x00000ff0
 
 /* naskfunc.nas */
 void io_hlt(void);

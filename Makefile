@@ -13,7 +13,7 @@ BIN2OBJ	 = $(TOOLPATH)bin2obj.exe
 BIM2HRB	 = $(TOOLPATH)bim2hrb.exe
 RULEFILE = $(TOOLPATH)haribote/haribote.rul
 EDIMG	 = $(TOOLPATH)edimg.exe
-IMGTOL	 = $(TOOLPATH)emgtol.com
+IMGTOL	 = $(TOOLPATH)imgtol.com
 COPY	 = copy
 DEL      = del
 
