@@ -10,6 +10,8 @@ void HariMain(void)
     int mx, my;
 
     init_gdtidt();
+    init_pic();
+
     init_palette(); /* パレットを設定 */
     init_screen8(binfo->vram, binfo->scrnx, binfo->scrny);
     init_mouse_cursor8(mcursor, COL8_008484);
