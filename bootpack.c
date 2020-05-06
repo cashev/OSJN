@@ -5,7 +5,7 @@
 
 void HariMain(void)
 {
-    struct BOOTINFO *binfo = (struct BOOTINFO *) 0x0ff0; // asmhead.nas の番地に合わせる
+    struct BOOTINFO *binfo = (struct BOOTINFO *) ADR_BOOTINFO; // asmhead.nas の番地に合わせる
     char s[40], mcursor[256];
     int mx, my;
 
