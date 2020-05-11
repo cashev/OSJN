@@ -61,13 +61,13 @@ void HariMain(void)
         if (mouse_decode(&mdec, i) != 0) {
           // データが3バイト揃ったので表示
           sprintf(s, "[lcr %4d %4d]", mdec.x, mdec.y);
-        if ((mdec.btn & 0x01) != 0) {
+          if ((mdec.btn & 0x01) != 0) {
             s[1] = 'L';
           }
-        if ((mdec.btn & 0x02) != 0) {
+          if ((mdec.btn & 0x02) != 0) {
             s[3] = 'R';
           }
-        if ((mdec.btn & 0x04) != 0) {
+          if ((mdec.btn & 0x04) != 0) {
             s[2] = 'C';
           }
           boxfill8(binfo->vram, binfo->scrnx, COL8_008484, 32, 16, 32 + 15 * 8 - 1, 31);
