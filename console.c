@@ -111,7 +111,7 @@ void cons_putchar(struct CONSOLE *cons, int chr, char move)
     cons_newline(cons);
   } else if (s[0] == 0x0d) { // 復帰
     // とりあえずなにもしない
-  } else {
+  } else { // 普通の文字
     putfonts8_asc_sht(cons->sht, cons->cur_x, cons->cur_y, COL8_FFFFFF, COL8_000000, s, 1);
     if (move != 0) {
       // moveが0のときはカーソルを進めない
@@ -150,7 +150,7 @@ void cons_newline(struct CONSOLE *cons)
 
 void cons_putstr0(struct CONSOLE *cons, char *s)
 {
-  for (; s != 0; s++) {
+  for (; *s != 0; s++) {
     cons_putchar(cons, *s, 1);
   }
   return;
