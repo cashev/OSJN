@@ -24,7 +24,7 @@ CYLS	EQU		10				; どこまで読み込むか
 		DD		2880			; このドライブ大きさをもう一度書く
 		DB		0,0,0x29		; よくわからないけどこの値にしておくといいらしい
 		DD		0xffffffff		; たぶんボリュームシリアル番号
-		DB		"HARIBOTEOS   "	; ディスクの名前（11バイト）
+		DB		"HARIBOTEOS "	; ディスクの名前（11バイト）
 		DB		"FAT12   "		; フォーマットの名前（8バイト）
 		RESB	18				; とりあえず18バイトあけておく
 
@@ -94,7 +94,6 @@ putloop:
 fin:
 		HLT						; 何かあるまでCPUを停止させる
 		JMP		fin				; 無限ループ
-
 msg:
 		DB		0x0a, 0x0a		; 改行を2つ
 		DB		"load error"

@@ -29,7 +29,9 @@ void enable_mouse(struct FIFO32 *fifo, int data0, struct MOUSE_DEC *mdec)
   io_out8(PORT_KEYCMD, KEYCMD_SENDTO_MOUSE);
   wait_KBC_sendready();
   io_out8(PORT_KEYDAT, MOUSECMD_ENABLE);
-  return; // うまくいくとACK(0xfa)が送信されてくる
+  // うまくいくとACK(0xfa)が送信されてくる
+  mdec->phase = 0; // マウスの0xfaを待っている段階
+  return;
 }
 
 int mouse_decode(struct MOUSE_DEC *mdec, unsigned char dat)

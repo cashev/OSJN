@@ -111,6 +111,7 @@ _api_malloc:  ; char *api_malloc(int size);
   MOV    ECX,[ESP+8]  ; size
   INT    0x40
   POP    EBX
+  RET
 
 _api_free:  ; void api_free(char *addr, int size);
   PUSH   EBX

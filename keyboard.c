@@ -33,9 +33,10 @@ void wait_KBC_sendready(void)
 
 void init_keyboard(struct FIFO32 *fifo, int data0)
 {
-  // キーボードコントローラーの初期化
+  // 書き込み先のFIFOバッファを記憶
   keyfifo = fifo;
   keydata0 = data0;
+  // キーボードコントローラーの初期化
   wait_KBC_sendready();
   io_out8(PORT_KEYCMD, KEYCMD_WRITE_MODE);
   wait_KBC_sendready();

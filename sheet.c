@@ -63,7 +63,6 @@ void sheet_refreshmap(struct SHTCTL *ctl, int vx0, int vy0, int vx1, int vy1, in
   if (vy0 < 0) { vy0 = 0; };
   if (vx1 > ctl->xsize) { vx1 = ctl->xsize; };
   if (vy1 > ctl->ysize) { vy1 = ctl->ysize; };
-
   for (h = h0; h <= ctl->top; h++) {
     sht = ctl->sheets[h];
     sid = sht - ctl->sheets0; // 番地を引き算してそれを下じき番号として利用
@@ -94,13 +93,11 @@ void sheet_refreshsub(struct SHTCTL *ctl, int vx0, int vy0, int vx1, int vy1, in
   int h, bx, by, vx, vy, bx0, by0, bx1, by1;
   unsigned char *buf, *vram = ctl->vram, *map = ctl->map, sid;
   struct SHEET *sht;
-
   // refresh範囲が画面外にはみ出していたら補正
   if (vx0 < 0) { vx0 = 0; };
   if (vy0 < 0) { vy0 = 0; };
   if (vx1 > ctl->xsize) { vx1 = ctl->xsize; };
   if (vy1 > ctl->ysize) { vy1 = ctl->ysize; };
-
   for (h = h0; h <= h1; h++) {
     sht = ctl->sheets[h];
     buf = sht->buf;
@@ -218,4 +215,3 @@ void sheet_free(struct SHEET *sht)
   sht->flags = 0; // 未使用マーク
   return;
 }
-

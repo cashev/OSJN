@@ -23,7 +23,7 @@ void load_gdtr(int limit, int addr);
 void load_idtr(int limit, int addr);
 int load_cr0(void);
 void store_cr0(int cr0);
-void store_tr(int tr);
+void load_tr(int tr);
 void asm_inthandler0c(void);
 void asm_inthandler0d(void);
 void asm_inthandler20(void);
@@ -221,7 +221,6 @@ struct TASKCTL {
   struct TASKLEVEL level[MAX_TASKLEVELS];
   struct TASK tasks0[MAX_TASKS];
 };
-
 extern struct TIMER *task_timer;
 struct TASK *task_now(void);
 struct TASK *task_init(struct MEMMAN *memman);

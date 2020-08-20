@@ -21,19 +21,19 @@ void make_wtitle8(unsigned char *buf, int xsize, char *title, char act)
 {
   static char closebtn[14][16] = {
     "OOOOOOOOOOOOOOO@",
-		"OQQQQQQQQQQQQQ$@",
-		"OQQQQQQQQQQQQQ$@",
-		"OQQQ@@QQQQ@@QQ$@",
-		"OQQQQ@@QQ@@QQQ$@",
-		"OQQQQQ@@@@QQQQ$@",
-		"OQQQQQQ@@QQQQQ$@",
-		"OQQQQQ@@@@QQQQ$@",
-		"OQQQQ@@QQ@@QQQ$@",
-		"OQQQ@@QQQQ@@QQ$@",
-		"OQQQQQQQQQQQQQ$@",
-		"OQQQQQQQQQQQQQ$@",
-		"O$$$$$$$$$$$$$$@",
-		"@@@@@@@@@@@@@@@@"
+    "OQQQQQQQQQQQQQ$@",
+    "OQQQQQQQQQQQQQ$@",
+    "OQQQ@@QQQQ@@QQ$@",
+    "OQQQQ@@QQ@@QQQ$@",
+    "OQQQQQ@@@@QQQQ$@",
+    "OQQQQQQ@@QQQQQ$@",
+    "OQQQQQ@@@@QQQQ$@",
+    "OQQQQ@@QQ@@QQQ$@",
+    "OQQQ@@QQQQ@@QQ$@",
+    "OQQQQQQQQQQQQQ$@",
+    "OQQQQQQQQQQQQQ$@",
+    "O$$$$$$$$$$$$$$@",
+    "@@@@@@@@@@@@@@@@"
   };
   int x, y;
   char c, tc, tbc;
@@ -82,7 +82,7 @@ void make_textbox8(struct SHEET *sht, int x0, int y0, int sx, int sy, int c)
   boxfill8(sht->buf, sht->bxsize, COL8_000000, x0 - 1, y0 - 2, x1 + 0, y0 - 2);
   boxfill8(sht->buf, sht->bxsize, COL8_000000, x0 - 2, y0 - 2, x0 - 2, y1 + 0);
   boxfill8(sht->buf, sht->bxsize, COL8_C6C6C6, x0 - 2, y1 + 1, x1 + 0, y1 + 1);
-  boxfill8(sht->buf, sht->bxsize, COL8_C6C6C6, x1 + 1, y0 - 3, x1 + 1, y1 + 1);
+  boxfill8(sht->buf, sht->bxsize, COL8_C6C6C6, x1 + 1, y0 - 2, x1 + 1, y1 + 1);
   boxfill8(sht->buf, sht->bxsize, c,           x0 - 1, y0 - 1, x1 + 0, y1 + 0);
   return;
 }

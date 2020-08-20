@@ -157,5 +157,3 @@ int memman_free_4k(struct MEMMAN *man, unsigned int addr, unsigned int size)
   i = memman_free(man, addr, size);
   return i;
 }
-
-

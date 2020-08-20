@@ -73,25 +73,23 @@ void HariMain(void)
   init_screen8(buf_back, binfo->scrnx, binfo->scrny);
 
   // sht_cons
-  for (i = 0; i < 3; i++) {
-    sht_cons = sheet_alloc(shtctl);
-    buf_cons = (unsigned char *) memman_alloc_4k(memman, 256 * 165);
-    sheet_setbuf(sht_cons, buf_cons, 256, 165, -1); // 透明色なし
-    make_window8(buf_cons, 256, 165, "console", 0);
-    make_textbox8(sht_cons, 8, 28, 240, 128, COL8_000000);
-    task_cons = task_alloc();
-    task_cons->tss.esp = memman_alloc_4k(memman, 64 * 1024) + 64 * 1024 - 12;
-    task_cons->tss.eip = (int) &console_task;
-    task_cons->tss.es = 1 * 8;
-    task_cons->tss.cs = 2 * 8;
-    task_cons->tss.ss = 1 * 8;
-    task_cons->tss.ds = 1 * 8;
-    task_cons->tss.fs = 1 * 8;
-    task_cons->tss.gs = 1 * 8;
-    *((int *) (task_cons->tss.esp + 4)) = (int) sht_cons;
-    *((int *) (task_cons->tss.esp + 8)) = memtotal;
-    task_run(task_cons, 2, 2); // level=2, priority=2
-  }
+  sht_cons = sheet_alloc(shtctl);
+  buf_cons = (unsigned char *) memman_alloc_4k(memman, 256 * 165);
+  sheet_setbuf(sht_cons, buf_cons, 256, 165, -1); // 透明色なし
+  make_window8(buf_cons, 256, 165, "console", 0);
+  make_textbox8(sht_cons, 8, 28, 240, 128, COL8_000000);
+  task_cons = task_alloc();
+  task_cons->tss.esp = memman_alloc_4k(memman, 64 * 1024) + 64 * 1024 - 12;
+  task_cons->tss.eip = (int) &console_task;
+  task_cons->tss.es = 1 * 8;
+  task_cons->tss.cs = 2 * 8;
+  task_cons->tss.ss = 1 * 8;
+  task_cons->tss.ds = 1 * 8;
+  task_cons->tss.fs = 1 * 8;
+  task_cons->tss.gs = 1 * 8;
+  *((int *) (task_cons->tss.esp + 4)) = (int) sht_cons;
+  *((int *) (task_cons->tss.esp + 8)) = memtotal;
+  task_run(task_cons, 2, 2); // level=2, priority=2
 
   // sht_win
   sht_win = sheet_alloc(shtctl);

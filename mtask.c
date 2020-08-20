@@ -77,8 +77,8 @@ struct TASK *task_init(struct MEMMAN *memman)
   int i;
   struct TASK *task, *idle;
   struct SEGMENT_DESCRIPTOR *gdt = (struct SEGMENT_DESCRIPTOR *) ADR_GDT;
-  taskctl = (struct TASKCTL *) memman_alloc_4k(memman, sizeof (struct TASKCTL));
 
+  taskctl = (struct TASKCTL *) memman_alloc_4k(memman, sizeof (struct TASKCTL));
   for (i = 0; i < MAX_TASKS; i++) {
     taskctl->tasks0[i].flags = 0;
     taskctl->tasks0[i].sel = (TASK_GDT0 + i) * 8;
