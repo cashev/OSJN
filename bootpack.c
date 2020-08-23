@@ -98,7 +98,6 @@ void HariMain(void)
     task_run(task_cons[i], 2, 2); // level=2, priority=2
     sht_cons[i]->task = task_cons[i];
     sht_cons[i]->flags |= 0x20; // カーソルあり
-
   }
 
   // sht_win
@@ -242,7 +241,7 @@ void HariMain(void)
           task_cons[0]->tss.eip = (int) asm_end_app;
           io_sti();
         }
-        if (i == 256 + 0x57 && shtctl->top > 2) { // F11
+        if (i == 256 + 0x57) { // F11
           sheet_updown(shtctl->sheets[1], shtctl->top - 1);
         }
         if (i == 256 + 0xfa) { // キーボードがデータを無事に受け取った
